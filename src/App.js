@@ -25,12 +25,15 @@ function App() {
                     className=" mr-sm-2 rounded-5 search-bar border-0 py-2 "
                     value={changeCity}
                     onChange={e => setChangeCity(e.target.value)}
+                    // onKeyDown={() => {
+                    //   setSearchQuery(changeCity);
+                    // }}
                   />
                 </Col>
                 <Col xs="auto px-0">
                   <button
                     className="btn px-0"
-                    type="submit"
+                    type="button"
                     onClick={() => {
                       setSearchQuery(changeCity);
                     }}
