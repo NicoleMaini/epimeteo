@@ -3,8 +3,6 @@
 import { Container, Row, Spinner } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
-// import { sun } from "../img/sun.png";
-
 function CardInfoMeteo(props) {
   const [city, setCity] = useState("");
   function fetchMeteo() {
@@ -33,12 +31,12 @@ function CardInfoMeteo(props) {
 
   return (
     <>
-      {city === "" && <Spinner />}
+      {city === "" && <Spinner className="my-3" />}
       {city !== "" && (
         <Container className="py-2 my-2">
           <Row className="w-50 mx-auto color p-3 justify-content-center text-center">
-            <h5 className="fw-bold ">Today</h5>
-            <p className="small">{city.weather[0].main}</p>
+            <h5 className="fw-bold ">Today in: {city.name}</h5>
+            <p>{city.weather[0].main}</p>
             <div className="rounded-circle img-cont text-center my-3">
               <img
                 src={`http://openweathermap.org/img/wn/${city.weather[0].icon}.png`}
@@ -46,9 +44,9 @@ function CardInfoMeteo(props) {
                 className="w-100 h-100 object-fit-cover p-1 m-0"
               />
             </div>
-            <p className="small">{city.weather[0].description}</p>
-            <p>Humidity: {city.main.humidity}%</p>
-            <p>Temp: {city.main.temp}°</p>
+            <p>{city.weather[0].description}</p>
+            <p className="small">Humidity: {city.main.humidity}%</p>
+            <p className="small">Temp: {city.main.temp}°</p>
           </Row>
         </Container>
       )}

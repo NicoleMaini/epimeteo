@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
 p,
 h3,
 h1,
@@ -13,10 +21,18 @@ a {
   cursor: pointer;
 }
 
-a:hover {
+.space {
+  border-right: 2px black solid;
+}
+
+.bg {
+  padding-block: 0.4rem;
+}
+
+.bg:hover {
   border-radius: 10px;
   background-color: #eaf2fd !important;
-  padding-bottom: 0.5rem;
+  scale: 1.04;
 }
 
 .search-bar {
@@ -26,6 +42,13 @@ a:hover {
 .color {
   background-color: #d8e3f5;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.color:hover {
+  background-color: #eff4fc;
+  scale: 1.04;
+  transform: 0.3s;
 }
 
 .img-container {
