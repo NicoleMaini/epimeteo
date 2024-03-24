@@ -35,6 +35,10 @@ a {
   scale: 1.04;
 }
 
+.here {
+  color: gray;
+}
+
 .search-bar {
   background-color: #eaf2fd !important;
 }
@@ -43,6 +47,14 @@ a {
   background-color: #d8e3f5;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.bg-color {
+  background-color: #eaf2fd !important;
+}
+
+.font-s {
+  font-size: 1.5rem;
 }
 
 .color:hover {

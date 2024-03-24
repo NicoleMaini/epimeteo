@@ -5,7 +5,7 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AsideBarMEteo from "./componets/AsideBarMeteo";
-import CardInfoMeteo from "./componets/CardInfoMeteo";
+import BodyInfoMeteo from "./componets/BodyInfoMeteo";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("Bologna");
@@ -13,17 +13,18 @@ function App() {
 
   return (
     <>
+      <div className="bg-color font-s text-center py-3 fw-bold">EPIMeteo</div>
       <Container>
-        <Row className="d-flex justify-content-center my-5">
+        <Row className="d-flex justify-content-center">
           <Col xs={12} md={4} className="text-center">
-            <Form className="mt-5 mb-3 mx-2">
+            <Form className="my-3 mx-2">
               <Container>
                 <Row>
                   <Col xs={11} className="auto px-0">
                     <Form.Control
                       type="text"
-                      placeholder="Cerca località"
-                      className="mr-sm-2 rounded-5 search-bar border-0 py-2"
+                      placeholder="search location"
+                      className="mr-sm-2 rounded-5 search-bar border-0 py-2 ps-4"
                       value={changeCity}
                       onChange={e => setChangeCity(e.target.value)}
                       onKeyDown={e => {
@@ -62,10 +63,9 @@ function App() {
             <AsideBarMEteo searchQuery={searchQuery} />
           </Col>
           <Col xs={12} md={8} className="text-center">
-            <h2 className="text-center mt-5">Le più ricercate</h2>
-            <Container className="d-flex justify-content-evenly my-5">
+            <Container className="d-flex justify-content-evenly my-3">
               <Nav>
-                <Nav.Item className="h4 bg my-0">
+                <Nav.Item className={searchQuery === "milan" ? "h4 bg my-0 here" : "h4 bg my-0"}>
                   <Nav.Link
                     className="py-0"
                     onClick={() => {
@@ -124,10 +124,11 @@ function App() {
                 </Nav.Item>
               </Nav>
             </Container>
-            <CardInfoMeteo searchQuery={searchQuery} />
+            <BodyInfoMeteo searchQuery={searchQuery} />
           </Col>
         </Row>
       </Container>
+      <div className="bg-color text-center py-3 mt-5">@EPIMeteo</div>
     </>
   );
 }

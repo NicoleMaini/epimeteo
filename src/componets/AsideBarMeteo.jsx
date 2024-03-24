@@ -7,13 +7,17 @@ import CardSmallMeteo from "./CardSmallMeteo";
 function AsideBarMEteo(props) {
   const [days, setDays] = useState("");
 
-  function fetchMeteo() {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${props.searchQuery}&appid=6704139eec1936a1a792ca1e00257325&units=metric`
-    )
+  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${props.searchQuery}&appid=6704139eec1936a1a792ca1e00257325&units=metric`;
+  const urlFail = `https://api.openweathermap.org/data/2.5/forecast?q=bologna&appid=6704139eec1936a1a792ca1e00257325&units=metric`;
+
+  function fetchMeteo(url) {
+    fetch(url)
       .then(resp => {
         if (resp.ok) {
           return resp.json();
+        } else {
+          alert("Ops, la città é inesistente");
+          return fetchMeteo(urlFail);
         }
       })
       .then(obj => {
@@ -28,14 +32,16 @@ function AsideBarMEteo(props) {
 
   useEffect(() => {
     if (props.searchQuery !== "") {
-      fetchMeteo();
+      fetchMeteo(url);
     }
   }, [props.searchQuery]);
+
+  console.log(days === undefined);
 
   return (
     <>
       {days === "" && <Spinner />}
-      {days !== "" && (
+      {days !== "" && days !== undefined && (
         <Container>
           <h3>{days.city.name}</h3>
           {days.list.map(day => {
@@ -44,7 +50,7 @@ function AsideBarMEteo(props) {
             if (day.dt_txt.charAt(12) === "0") {
               return (
                 <CardSmallMeteo
-                  date={new Date(day.dt_txt).toLocaleDateString("it-IT", { weekday: "long" })}
+                  date={new Date(day.dt_txt).toLocaleDateString("en-EN", { weekday: "long" })}
                   key={day.dt}
                   day={day.weather[0].main}
                   icon={day.weather[0].icon}
