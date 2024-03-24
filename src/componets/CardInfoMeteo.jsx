@@ -16,8 +16,7 @@ function CardInfoMeteo(props) {
           return resp.json();
         }
       })
-      .then(obj => {
-        const city = obj;
+      .then(city => {
         console.log(city);
         setCity(city);
       })

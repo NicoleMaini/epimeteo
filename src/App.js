@@ -1,5 +1,5 @@
 import { Col, Container, Nav, Row } from "react-bootstrap";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,7 +16,7 @@ function App() {
       <Container>
         <Row>
           <Col xs={12} md={3} className="my-5">
-            <Form inline className="mb-5 mx-2">
+            <Form className="mb-5 mx-2">
               <Row className="justify-content-around">
                 <Col xs="auto px-0">
                   <Form.Control
@@ -25,9 +25,13 @@ function App() {
                     className=" mr-sm-2 rounded-5 search-bar border-0 py-2 "
                     value={changeCity}
                     onChange={e => setChangeCity(e.target.value)}
-                    // onKeyDown={() => {
-                    //   setSearchQuery(changeCity);
-                    // }}
+                    onKeyDown={e => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        setSearchQuery(changeCity);
+                        setChangeCity("");
+                      }
+                    }}
                   />
                 </Col>
                 <Col xs="auto px-0">
@@ -36,6 +40,7 @@ function App() {
                     type="button"
                     onClick={() => {
                       setSearchQuery(changeCity);
+                      setChangeCity("");
                     }}
                   >
                     <svg
@@ -43,7 +48,7 @@ function App() {
                       width="16"
                       height="16"
                       fill="currentColor"
-                      class="bi bi-search"
+                      className="bi bi-search"
                       viewBox="0 0 16 16"
                     >
                       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
