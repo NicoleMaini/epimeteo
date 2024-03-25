@@ -47,7 +47,7 @@ function BodyInfoMeteo(props) {
               // console.log(day);
               // console.log(hour.dt_txt.substr(11, 5));
 
-              if (day === today + 1) {
+              if (day === today) {
                 return (
                   <Col md={4} lg={3} key={hour.dt}>
                     <CardInfoMeteo
